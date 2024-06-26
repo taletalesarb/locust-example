@@ -11,18 +11,18 @@ services:
       - ./locustfile.py:/mnt/locust/locustfile.py
     command: -f /mnt/locust/locustfile.py --master
     networks:
-      - his-app-network
+      - test-network
   locust-worker:
     image: locustio/locust
     deploy:
-      replicas: 8
+      replicas: 1
     volumes:
       - ./locustfile.py:/mnt/locust/locustfile.py
     command: -f /mnt/locust/locustfile.py --worker --master-host locust-master
     networks:
-      - his-app-network
+      - test-network
 
 networks:
-  his-app-network:
+  test-network:
     driver: bridge
-    name: his-app-network
+    name: test-network
