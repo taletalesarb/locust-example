@@ -6,3 +6,4 @@ class WebsiteUser(HttpUser):
     def hello_world(self):
         # assume that user will just land at home path
         self.client.get("/")
+
