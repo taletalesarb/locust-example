@@ -1,4 +1,4 @@
-from locust import HttpUser, TaskSet, task, between
+from locust import HttpUser, task, between
 import json
 
 
@@ -6,7 +6,7 @@ class WebsiteUser(HttpUser):
     # we assume someone who is browsing the website,
     # generally has some waiting time (between
     # 5 and 10 seconds)
-    wait_time = between(0, 1)
+    wait_time = between(5, 10)
 
     def on_start(self):
         # start by waiting so that the simulated users
@@ -14,6 +14,7 @@ class WebsiteUser(HttpUser):
         self.wait()
         # assume all users arrive at the index page
         self.hello_world()
+        # assume all users will login
         self.login()
 
     def login(self):
